@@ -21,6 +21,6 @@ namespace ConferencePlanner.GraphQL.Data
             optionsBuilder.UseNpgsql(this.Configuration.GetConnectionString("ConferencePlanner"));
         }
 
-        public DbSet<Speaker> Speakers { get; set; }
+        public DbSet<Speaker> Speakers { get; set; } = default!;
     }
 }
