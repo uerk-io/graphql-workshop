@@ -19,7 +19,6 @@ namespace ConferencePlanner.GraphQL.Data
 
         public DateTimeOffset? EndTime { get; set; }
 
-        // Bonus points to those who can figure out why this is written this way
         public TimeSpan Duration =>
             EndTime?.Subtract(StartTime ?? EndTime ?? DateTimeOffset.MinValue) ??
                 TimeSpan.Zero;
