@@ -3,10 +3,12 @@ using HotChocolate;
 using ConferencePlanner.GraphQL.Data;
 using ConferencePlanner.GraphQL.DataLoader;
 using Microsoft.EntityFrameworkCore;
+using ConferencePlanner.GraphQL;
 
-namespace ConferencePlanner.GraphQL
+namespace GraphQL.Speakers
 {
-    public class Query
+    [ExtendObjectType("Query")]
+    public class SpeakerQueries
     {
         [UseApplicationDbContext]
         public Task<List<Speaker>> GetSpeakers([ScopedService] ApplicationDbContext context) =>
@@ -18,6 +20,6 @@ namespace ConferencePlanner.GraphQL
             CancellationToken cancellationToken
             ) =>
             dataLoader.LoadAsync(id, cancellationToken);
-            
+
     }
 }
