@@ -29,7 +29,7 @@ namespace ConferencePlanner.GraphQL
 /*            services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlite("Data Source=conferences.db"));*/
 
-            services.AddDbContext<ApplicationDbContext>((provider, optionsBuilder) =>
+            services.AddPooledDbContextFactory<ApplicationDbContext>((provider, optionsBuilder) =>
             {
                 optionsBuilder.UseNpgsql(Configuration.GetConnectionString("ConferencePlanner"), contextOptionsBuilder => contextOptionsBuilder.MigrationsAssembly("GraphQL"));
             });
