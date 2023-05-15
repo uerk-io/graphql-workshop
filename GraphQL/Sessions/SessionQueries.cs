@@ -16,6 +16,8 @@ namespace ConferencePlanner.GraphQL.Sessions
     {
         [UseApplicationDbContext]
         [UsePaging(typeof(NonNullType<SessionType>))]
+        [UseFiltering(typeof(SessionFilterInputType))]
+        [UseSorting]
         public IQueryable<Session> GetSessions(
             [ScopedService] ApplicationDbContext context) =>
             context.Sessions;
