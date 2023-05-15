@@ -35,13 +35,13 @@ namespace ConferencePlanner.GraphQL.Tracks
             await context.Tracks.Where(t => names.Contains(t.Name)).ToListAsync();
 
         public Task<Track> GetTrackByIdAsync(
-            [ID(nameof(Track))] int id,
+            [param: ID] int id,
             TrackByIdDataLoader trackById,
             CancellationToken cancellationToken) =>
             trackById.LoadAsync(id, cancellationToken);
 
         public async Task<IEnumerable<Track>> GetTracksByIdAsync(
-            [ID(nameof(Track))] int[] ids,
+            [param: ID] int[] ids,
             TrackByIdDataLoader trackById,
             CancellationToken cancellationToken) =>
             await trackById.LoadAsync(ids, cancellationToken);
