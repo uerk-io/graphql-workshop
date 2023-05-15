@@ -30,7 +30,7 @@ namespace ConferencePlanner.GraphQL.Types
         private class AttendeeResolvers
         {
             public async Task<IEnumerable<Session>> GetSessionsAsync(
-                Attendee attendee,
+                [Parent] Attendee attendee,
                 [ScopedService] ApplicationDbContext dbContext,
                 SessionByIdDataLoader sessionById,
                 CancellationToken cancellationToken)

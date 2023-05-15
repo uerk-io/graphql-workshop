@@ -21,5 +21,10 @@ namespace GraphQL.Speakers
             ) =>
             dataLoader.LoadAsync(id, cancellationToken);
 
+        public async Task<IEnumerable<Speaker>> GetSpeakersByIdAsync(
+            [ID(nameof(Speaker))] int[] ids,
+            SpeakerByIdDataLoader dataLoader,
+            CancellationToken cancellationToken) =>
+            await dataLoader.LoadAsync(ids, cancellationToken);
     }
 }
