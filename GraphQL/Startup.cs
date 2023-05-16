@@ -53,6 +53,7 @@ namespace ConferencePlanner.GraphQL
                     .AddTypeExtension<TrackMutations>()
                 .AddSubscriptionType(d => d.Name("Subscription"))
                     .AddTypeExtension<SessionSubscriptions>()
+                    .AddTypeExtension<AttendeeSubscriptions>()
                 .AddType<AttendeeType>()
                 .AddType<SessionType>()
                 .AddType<SpeakerType>()

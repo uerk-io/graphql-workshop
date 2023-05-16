@@ -38,6 +38,7 @@ namespace ConferencePlanner.GraphQL.Attendees
         public async Task<CheckInAttendeePayload> CheckInAttendeeAsync(
             CheckInAttendeeInput input,
             [ScopedService] ApplicationDbContext context,
+            [Service] ITopicEventSender eventSender,
             CancellationToken cancellationToken)
         {
             Attendee attendee = await context.Attendees.FirstOrDefaultAsync(
@@ -56,6 +57,11 @@ namespace ConferencePlanner.GraphQL.Attendees
                 });
 
             await context.SaveChangesAsync(cancellationToken);
+
+            await eventSender.SendAsync(
+                "OnAttendeeCheckedIn_" + input.SessionId,
+                input.AttendeeId,
+                cancellationToken);
 
             return new CheckInAttendeePayload(attendee, input.SessionId);
         }
