@@ -5,7 +5,7 @@ using ConferencePlanner.GraphQL.DataLoader;
 using Microsoft.EntityFrameworkCore;
 using ConferencePlanner.GraphQL;
 
-namespace GraphQL.Speakers
+namespace ConferencePlanner.GraphQL.Speakers
 {
     [ExtendObjectType("Query")]
     public class SpeakerQueries

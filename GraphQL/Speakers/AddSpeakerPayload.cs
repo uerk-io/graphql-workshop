@@ -1,7 +1,7 @@
 ﻿using ConferencePlanner.GraphQL.Data;
 using GraphQL.Common;
 
-namespace GraphQL.Speakers
+namespace ConferencePlanner.GraphQL.Speakers
 {
     public class AddSpeakerPayload : SpeakerPayloadBase
     {

@@ -8,7 +8,7 @@ using ConferencePlanner.GraphQL.DataLoader;
 using ConferencePlanner.GraphQL.Sessions;
 using ConferencePlanner.GraphQL.Tracks;
 using ConferencePlanner.GraphQL.Types;
-using GraphQL.Speakers;
+using ConferencePlanner.GraphQL.Speakers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
