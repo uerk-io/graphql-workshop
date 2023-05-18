@@ -58,7 +58,7 @@ namespace ConferencePlanner.GraphQL
                 .AddType<SessionType>()
                 .AddType<SpeakerType>()
                 .AddType<TrackType>()
-                .EnableRelaySupport()
+                .AddGlobalObjectIdentification()
                 .AddFiltering()
                 .AddSorting()
                 .AddInMemorySubscriptions()

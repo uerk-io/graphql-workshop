@@ -16,7 +16,7 @@ using Xunit;
 
 namespace GraphQL.Tests
 {
-    public class AttendeeTests
+    public class AttendeeTests : IDisposable
     {
         [Fact]
         public async Task Attendee_Schema_Changed()
@@ -25,7 +25,10 @@ namespace GraphQL.Tests
             // act
             ISchema schema = await new ServiceCollection()
                 .AddPooledDbContextFactory<ApplicationDbContext>(
-                    options => options.UseInMemoryDatabase("Data Source=conferences.db"))
+                    options => {
+                        options.UseInMemoryDatabase("Data Source=conferences.db");
+
+                    })
                 .AddGraphQL()
                 .AddQueryType(d => d.Name("Query"))
                     .AddTypeExtension<AttendeeQueries>()
@@ -35,7 +38,8 @@ namespace GraphQL.Tests
                 .AddType<SessionType>()
                 .AddType<SpeakerType>()
                 .AddType<TrackType>()
-                .EnableRelaySupport()
+                .AddGlobalObjectIdentification()
+                .AddQueryFieldToMutationPayloads()
                 .BuildSchemaAsync();
 
             // assert
@@ -58,7 +62,7 @@ namespace GraphQL.Tests
                 .AddType<SessionType>()
                 .AddType<SpeakerType>()
                 .AddType<TrackType>()
-                .EnableRelaySupport()
+                .AddGlobalObjectIdentification()
                 .BuildRequestExecutorAsync();
 
             // act
